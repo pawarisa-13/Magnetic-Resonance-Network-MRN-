@@ -1,132 +1,238 @@
 # Magnetic Resonance Communication Network (MRCN)
-## Role and Responsibility Document
-Version: 1.0  
+## Roles, Responsibilities & Working Boundaries
+Version: 2.0  
 Sprint: Alpha  
 Methodology: Agile Scrum  
 
 ---
 
-# 1. Team Members
+# 1. Team Role Assignment Table
 
-| No. | Name | Student ID |
-|----|------|------------|
-| 1 | นางสาวกัญญาภัค ทองวิเศษ | 673380391-3 |
-| 2 | นางสาวอลิชา ชนะบุญ | 673380431-7 |
-| 3 | นางสาวปวริศา สดีดาชมภู | 673380592-3 |
-| 4 | นายบุญปวณี เรืองไพศาล | 673380588-4 |
-| 5 | นายปรีชา ศรหีนองบัว | 653380335-1 |
-
----
-
-# 2. Role Assignment Matrix
-
-| Role | Assigned To | Primary Responsibilities | Secondary Responsibilities | Decision Authority |
-|------|------------|--------------------------|----------------------------|-------------------|
-| System Architect | นางสาวกัญญาภัค ทองวิเศษ | ออกแบบสถาปัตยกรรมระบบ (Layer Design, Node Model, Routing Concept) | ตรวจสอบความสอดคล้องทุก Layer | อนุมัติ Architecture Change |
-| Protocol & Routing Engineer | นางสาวอลิชา ชนะบุญ | พัฒนา Discovery Mechanism, Controlled Flooding, Store-and-Forward | วิเคราะห์ Network Resilience | อนุมัติ Protocol Logic |
-| Implementation & Simulation Lead | นางสาวปวริศา สดีดาชมภู | พัฒนา Node Simulation, Message Handling | เตรียม Demo Scenario | ตัดสินใจ Implementation ระดับ Code |
-| Hardware & Energy Engineer | นายบุญปวณี เรืองไพศาล | ออกแบบ TX/RX Model, Power Strategy | วิเคราะห์ Energy Consumption | อนุมัติ Energy Optimization |
-| QA & Documentation Lead | นายปรีชา ศรหีนองบัว | จัดทำเอกสารและ Test Plan | ตรวจสอบคุณภาพ Sprint | อนุมัติเอกสาร |
+| Role | Assigned To | Primary Responsibilities | Secondary Responsibilities | Decision Authority | Reporting To |
+|------|------------|--------------------------|----------------------------|-------------------|--------------|
+| System Architect | นางสาวกัญญาภัค ทองวิเศษ | System-wide architecture design, Layer definitions, Protocol specification | Design documentation, Architecture validation | Final say on architecture & interface changes | Instructor |
+| Protocol & Routing Engineer | นางสาวอลิชา ชนะบุญ | Routing algorithm, Discovery mechanism, Flooding logic | Performance tuning, Edge case handling | Routing logic decisions | Architect |
+| Implementation & Simulation Lead | นางสาวปวริศา สดีดาชมภู | Node simulation, Message handling, Multi-node integration | Demo preparation, Code structure design | Code-level implementation | Architect |
+| Hardware & Energy Engineer | นายบุญปวณี เรืองไพศาล | Signal model design, Energy optimization, TX/RX modeling | Performance measurement | Energy & signal modeling decisions | Architect |
+| QA & Documentation Lead | นายปรีชา ศรหีนองบัว | Test planning, Test execution, Quality metrics | Documentation control, Validation reports | Quality gate & release validation | All |
 
 ---
 
-# 3. Responsibility Breakdown by Layer
+# 2. Responsibility Matrix by Layer
 
-## 3.1 Physical & Resonance Layer
-**Responsible:** Hardware & Energy Engineer  
-**Support:** System Architect  
+## 2.1 Physical & Resonance Layer
+Design Owner: Hardware Engineer  
+Implementation Owner: Hardware Engineer  
+Testing Owner: QA  
+Documentation Owner: Architect  
 
-- ออกแบบ Magnetic Coil Model  
-- กำหนด Signal Modulation Strategy  
-- วิเคราะห์พลังงาน (Duty Cycle Optimization)  
-- ทดสอบระยะการสื่อสาร  
-
----
-
-## 3.2 Communication Layer
-**Responsible:** Protocol & Routing Engineer  
-**Support:** Implementation Lead  
-
-- พัฒนา Node Discovery (Beacon System)  
-- Controlled Flooding Protocol  
-- Store-and-Forward Mechanism  
-- ป้องกัน Infinite Loop (TTL + Message ID Cache)  
+Scope:
+- Magnetic signal modeling  
+- Power efficiency strategy  
+- Communication range validation  
 
 ---
 
-## 3.3 Decentralized Network Layer
-**Responsible:** System Architect  
-**Support:** Protocol Engineer  
+## 2.2 Communication Layer
+Design Owner: Architect  
+Implementation Owner: Protocol Engineer  
+Testing Owner: QA  
+Documentation Owner: Protocol Engineer  
 
-- ออกแบบ Distributed Architecture  
-- กำหนด Topic-based Messaging Model  
-- ออกแบบ Neighbor Table Structure  
-- วางแนวทาง Network Resilience  
-
----
-
-## 3.4 Simulation & Implementation Layer
-**Responsible:** Implementation & Simulation Lead  
-**Support:** All Members  
-
-- พัฒนา Multi-node Simulation  
-- ทดสอบ Message Broadcast  
-- ทดสอบ Disaster Scenario  
-- ตรวจสอบ Latency และ Reliability  
+Scope:
+- Node discovery  
+- Controlled flooding  
+- Store-and-forward  
+- Loop prevention (TTL, Message ID cache)  
 
 ---
 
-## 3.5 Documentation & Quality Control
-**Responsible:** QA & Documentation Lead  
+## 2.3 Decentralized Network Layer
+Design Owner: Architect  
+Implementation Owner: Implementation Lead  
+Testing Owner: QA  
+Documentation Owner: Architect  
 
-- จัดทำ Architecture_Spec.md  
-- Implementation_Plan.md  
-- Sprint_Plan.md  
-- Test_Plan.md  
-- ตรวจสอบ Markdown Formatting  
-
----
-
-# 4. Decision & Escalation Flow
-
-1. Routing/Protocol Issue → Protocol Engineer  
-2. Hardware/Signal Issue → Hardware Engineer  
-3. Simulation Bug → Implementation Lead  
-4. Architecture Conflict → System Architect  
-5. Documentation Approval → QA Lead  
-
-**Final Escalation Authority:** System Architect  
+Scope:
+- Distributed architecture  
+- Topic-based message model  
+- Neighbor table management  
+- Resilience strategy  
 
 ---
 
-# 5. Collaboration Rules
+## 2.4 Simulation Framework
+Design Owner: Architect  
+Implementation Owner: Implementation Lead  
+Testing Owner: QA  
+Documentation Owner: DevOps  
 
-- Daily Standup: 10–15 minutes  
-- Sprint Duration: 2 weeks  
-- Pull Request: ต้องมีอย่างน้อย 1 approval  
-- Major Architecture Change: ต้องได้รับการอนุมัติจาก Architect  
-- ทุก Sprint ต้องมี Demo Result  
+Scope:
+- Multi-node simulation  
+- Integration testing  
+- Scenario validation (disaster / underground)  
 
 ---
 
-# 6. Accountability Matrix (RACI Model)
+# 3. Decision Authority Matrix
 
-| Task | Architect | Protocol | Implementation | Hardware | QA |
-|------|-----------|----------|----------------|----------|----|
-| Architecture Design | R | C | C | C | I |
-| Node Simulation | C | C | R | I | I |
-| Routing Logic | C | R | C | I | I |
-| Energy Optimization | C | I | C | R | I |
-| Documentation | C | I | I | I | R |
+| Decision Type | Architect | Protocol | Implementation | Hardware | QA |
+|---------------|----------|----------|----------------|----------|----|
+| Architecture Change | Approve | Consult | Consult | Consult | Consult |
+| Routing Logic Update | Review | Approve | Consult | - | Consult |
+| Implementation Approach | Review | Consult | Approve | - | - |
+| Energy Model Change | Review | - | Consult | Approve | - |
+| Test Strategy | Consult | Consult | Consult | - | Approve |
+| Release Readiness | Consult | Consult | Consult | Consult | Approve |
 
 Legend:  
-R = Responsible  
-A = Accountable  
-C = Consulted  
-I = Informed  
+Approve = Final authority  
+Review = Oversight  
+Consult = Two-way communication  
 
 ---
 
-# 7. Commitment Statement
+# 4. Communication & Escalation Structure
 
-ทีมงาน Magnetic Resonance Communication Network (MRCN) ยืนยันว่าจะปฏิบัติตามบทบาทหน้าที่ที่ได้รับมอบหมาย และร่วมมือกันพัฒนา Sprint Alpha ให้สำเร็จตามเป้าหมาย โดยใช้แนวคิดเครือข่ายแบบกระจายศูนย์ที่สามารถทำงานได้แม้ระบบสื่อสารทั่วไปล้มเหลว
+## 4.1 Internal Communication Matrix
+
+| From \ To | Architect | Protocol | Implementation | Hardware | QA |
+|------------|----------|----------|----------------|----------|----|
+| Architect | - | Design updates | Interface specs | Signal requirements | Validation criteria |
+| Protocol | Routing changes | - | Integration needs | Performance data | Test requests |
+| Implementation | Code status | Integration help | - | Simulation metrics | Bug reports |
+| Hardware | Energy updates | Signal constraints | Model updates | - | Validation results |
+| QA | Test reports | Bug findings | Coverage results | Performance issues | - |
+
+---
+
+## 4.2 Escalation Path
+
+Issue Identified  
+↓  
+Assigned Owner attempts resolution (within 8 working hours)  
+↓  
+Escalate to Role Lead (within 16 hours)  
+↓  
+Team discussion & documented decision (within 24 hours)  
+↓  
+Architect final decision  
+↓  
+Instructor (if unresolved)
+
+---
+
+# 5. Working Boundaries
+
+## Architect
+In Scope:
+- System-level design
+- Interface definitions
+- Technology selection
+
+Out of Scope:
+- Line-by-line coding
+- Writing unit tests
+
+---
+
+## Protocol Engineer
+In Scope:
+- Routing logic
+- Message forwarding mechanisms
+
+Out of Scope:
+- Architecture redesign
+- Hardware signal modeling
+
+---
+
+## Implementation Lead
+In Scope:
+- Simulation coding
+- Integration logic
+
+Out of Scope:
+- Changing routing rules without review
+- Architecture-level decisions
+
+---
+
+## Hardware Engineer
+In Scope:
+- Energy & signal modeling
+- Performance measurement
+
+Out of Scope:
+- Routing algorithm changes
+- CI/CD setup
+
+---
+
+## QA & Documentation
+In Scope:
+- Test planning
+- Quality validation
+- Coverage reporting
+
+Out of Scope:
+- Implementation decisions
+- Architecture modifications
+
+---
+
+# 6. Critical Handoff Points
+
+| From | To | Deliverable | Acceptance Criteria |
+|------|----|-------------|--------------------|
+| Architect | Protocol | Routing Specification | Approved & documented |
+| Protocol | Implementation | Working Routing Module | Unit tests pass |
+| Implementation | QA | Integrated Simulation | End-to-end flow verified |
+| QA | Team | Test Report | No critical defects |
+
+---
+
+# 7. Sprint Governance Rules
+
+- Sprint duration: 2 weeks
+- No direct push to main branch
+- All changes via Pull Request
+- PR must:
+  - Reference issue
+  - Pass CI
+  - Have at least 1 reviewer approval
+- Architecture change requires formal design note
+- Sprint considered complete only if:
+  - All backlog items implemented
+  - All tests passing
+  - Documentation updated
+  - Demo scenario executable
+  - Version tag created
+
+---
+
+# 8. Time Allocation Guidelines
+
+| Role | Design | Coding | Testing | Documentation | Meetings |
+|------|--------|--------|---------|--------------|----------|
+| Architect | 40% | 10% | 10% | 25% | 15% |
+| Protocol | 20% | 50% | 10% | 10% | 10% |
+| Implementation | 15% | 60% | 10% | 5% | 10% |
+| Hardware | 25% | 40% | 15% | 10% | 10% |
+| QA | 20% | 10% | 50% | 10% | 10% |
+
+Expected workload: 6–10 hours per week per member
+
+---
+
+# 9. Commitment Statement
+
+We, the Magnetic Resonance Communication Network (MRCN) team, commit to:
+
+- Respect role boundaries  
+- Follow structured decision processes  
+- Maintain documentation discipline  
+- Deliver a resilient decentralized network prototype  
+- Complete Sprint Alpha with measurable and validated results  
+
+---
