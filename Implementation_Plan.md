@@ -1,5 +1,5 @@
-# Implementation Plan
-## Magnetic Resonance Communication Network (MRCN)
+# Magnetic Resonance Network (MRN)
+## Implementation Plan
 
 Version: 1.0  
 Development Model: Phase-Based Iterative Development  
