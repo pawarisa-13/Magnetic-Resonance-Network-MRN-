@@ -1,308 +1,267 @@
 # Magnetic Resonance Network (MRN)
-## Sprint Plan v2.0 (Full Engineering Version)
+## Master Project Plan (4-Week Intensive Development)
 
 ---
 
-# 1. Project Context
+# 1. Executive Summary
 
-| Item | Detail |
-|------|--------|
-| Project | Magnetic Resonance Network (MRN) |
-| Methodology | Agile Scrum |
-| Sprint Duration | 2 Weeks (14 Days) |
-| Team Size | 5–8 Members |
-| Branching Strategy | GitFlow |
-| CI/CD | GitHub Actions |
-| Deployment | Simulation → Embedded Prototype → Field Deployment |
+Magnetic Resonance Network (MRN) is a decentralized communication system 
+that uses near-field magnetic resonance instead of traditional RF or optical signals.
 
-MRN คือเครือข่ายสื่อสารแบบกระจายศูนย์ที่ใช้สนามแม่เหล็กเป็นตัวกลางในการถ่ายทอดข้อมูล แทน RF หรือ Optical Communication
+The objective is to create a resilient communication network capable of operating:
+- Without traditional infrastructure
+- Underwater
+- Underground
+- In disaster scenarios
 
----
-
-# 2. Team Structure & Roles
-
-| Role | Responsibility |
-|------|---------------|
-| Product Owner | กำหนด Vision และ Roadmap |
-| Scrum Master | ดูแลกระบวนการ Agile |
-| Physics Engineer | โมเดลสนามแม่เหล็กและ resonance |
-| Embedded Engineer | ออกแบบ coil และ firmware |
-| Network Engineer | Mesh routing และ protocol |
-| Security Engineer | Encryption และ integrity |
-| QA Engineer | Test & validation |
-| DevOps | CI/CD และ automation |
+This document outlines:
+- 4-week development roadmap
+- System architecture
+- Risk analysis
+- Technical constraints
+- Budget estimation
+- Success metrics
+- Feasibility evaluation
 
 ---
 
-# 3. Sprint Cadence
+# 2. System Overview
 
-Day 1: Sprint Planning  
-Day 2–11: Development + Daily Standup  
-Day 12–13: Integration + Testing  
-Day 14: Review + Retrospective  
+## 2.1 Core Concept
 
-Daily Standup Questions:
-- เมื่อวานทำอะไร?
-- วันนี้จะทำอะไร?
-- มี blocker ไหม?
+Communication medium: Near-field magnetic resonance  
+Topology: Decentralized mesh  
+Node role: Sender + Receiver + Relay  
 
----
+## 2.2 Layered Architecture
 
-# 4. Sprint Alpha – Magnetic Runtime Foundation
-
-## Objective
-สร้างระบบ Node + Magnetic Field Simulation ที่ทำงานได้จริง
-
-## Sprint Goal
-“Node สามารถส่งข้อมูลผ่าน Magnetic Field Model และ relay แบบพื้นฐานได้”
-
-## Scope
-- Magnetic Field Model (1/r³)
-- Node Runtime
-- Resonance Matching
-- Basic Relay
-- Logging
-- Unit Test
-
-## Modules
-- field_engine/
-- node_runtime/
-- resonance/
-- routing/
-- logger/
-- tests/
+| Layer | Function |
+|--------|----------|
+| Physical | Magnetic resonance signaling via LC circuit |
+| Data Link | Packet framing + CRC + ACK |
+| Network | Flood-based routing |
+| Security (Future) | Encryption + Authentication |
 
 ---
 
-# 5. Detailed Tasks – Sprint Alpha
+# 3. 4-Week Development Plan
 
-## SA-01: Magnetic Field Engine
+## Week 1 – System Design & Simulation
 
-```python
-def magnetic_field_strength(power, distance):
-    if distance <= 0:
-        return 0
-    return power / (distance ** 3)
-```
+### Objectives
+- Validate feasibility
+- Design architecture
+- Simulate magnetic field behavior
+
+### Tasks
+- Define use cases
+- Model magnetic attenuation (1/r³)
+- Simulate resonance curve
+- Draft system architecture diagram
+
+### Deliverables
+- Architecture documentation
+- Simulation scripts
+- Feasibility summary
+
+---
+
+## Week 2 – Physical Layer Prototype
+
+### Objectives
+- Build 2 working nodes
+- Achieve magnetic communication
+
+### Hardware Components
+- Copper coil
+- Capacitor (LC resonance tuning)
+- ESP32 or Arduino
+- Power supply
+
+### Tasks
+- Construct LC circuit
+- Encode binary data into frequency signal
+- Measure communication range
+- Conduct signal stability tests
+
+### Deliverables
+- 2-node communication
+- Range test results
+- Stability log
+
+---
+
+## Week 3 – Protocol & Reliability
+
+### Objectives
+- Implement structured communication
+- Improve reliability
+
+### Packet Format
+
+| Field | Description |
+|--------|------------|
+| PREAMBLE | Synchronization pattern |
+| SRC | Source ID |
+| DST | Destination ID |
+| DATA | Payload |
+| CRC | Error detection |
+
+### Features
+- CRC validation
+- ACK system
+- Retry mechanism
+- Timeout handling
+
+### Deliverables
+- Stable message transmission
+- Error detection working
+- Retry logic validated
+
+---
+
+## Week 4 – Mesh Network & Demonstration
+
+### Objectives
+- Implement multi-hop communication
+- Demonstrate resilience
+
+### Tasks
+- Add 3rd node as relay
+- Implement flood routing
+- Test 2-hop transmission
+- Measure latency and packet success rate
+- Record demo video
+- Write final report
+
+### Deliverables
+- 3-node mesh prototype
+- Performance metrics
+- Final documentation
+
+---
+
+# 4. Risk Analysis
+
+## 4.1 Technical Risks
+
+| Risk | Impact | Probability | Mitigation |
+|------|--------|------------|------------|
+| Short communication range | High | High | Add relay nodes |
+| Signal attenuation (1/r³) | High | High | Optimize coil size |
+| Low bandwidth | Medium | Medium | Reduce packet size |
+| High power consumption | Medium | Medium | Duty cycle transmission |
+| Resonance mismatch | Medium | Medium | Auto frequency tuning |
+
+---
+
+## 4.2 Environmental Risks
+
+| Risk | Impact | Mitigation |
+|------|--------|------------|
+| EMI interference | Medium | Shielding |
+| Metal obstruction | High | Increase node density |
+| Water conductivity | Medium | Adjust frequency |
+
+---
+
+## 4.3 Project Risks
+
+| Risk | Impact | Mitigation |
+|------|--------|------------|
+| Hardware damage | Medium | Prepare spare components |
+| Timeline delay | Medium | Parallel development |
+| Budget limitation | Low | Use low-cost hardware |
+
+---
+
+# 5. Technical Constraints
+
+| Constraint | Description |
+|------------|------------|
+| Physics | Magnetic field decay ∝ 1/r³ |
+| Range | Limited compared to RF |
+| Bandwidth | Lower than Wi-Fi |
+| Energy | Requires significant current |
+| Regulation | Must comply with EM standards |
+
+---
+
+# 6. Budget Estimation (Prototype – 3 Nodes)
+
+| Component | Quantity | Estimated Cost |
+|------------|----------|----------------|
+| ESP32 / Arduino | 3 | 900–1500 THB |
+| Copper Coil | 3 | 300 THB |
+| Capacitor Set | 1 | 200 THB |
+| Power Supply | 3 | 600 THB |
+| Misc (wires, PCB) | - | 500 THB |
+| Total Estimated | | 2,500–3,000 THB |
+
+---
+
+# 7. Performance Targets (Success Metrics)
+
+| Metric | Target |
+|--------|--------|
+| Communication Range | ≥ 1–3 meters |
+| Packet Success Rate | ≥ 80% |
+| Multi-hop Capability | ≥ 2 hops |
+| Latency per hop | < 200 ms |
+| Data Rate | 100–1000 bps |
+
+---
+
+# 8. Validation Tests
+
+1. Single-hop transmission test
+2. Multi-hop relay test
+3. Packet corruption detection test
+4. Power consumption measurement
+5. 1-hour stability test
 
 Acceptance Criteria:
-- คำนวณ decay ถูกต้อง
-- ไม่มี overflow
-- รองรับหลาย node
+- 3 nodes successfully relay data
+- CRC detects corrupted packet
+- Network remains functional if 1 node is removed
 
 ---
 
-## SA-02: MRN Node Runtime
+# 9. Strategic Evaluation
 
-```python
-class MRNNode:
-
-    def __init__(self, node_id, position, power=100, frequency=1.0):
-        self.node_id = node_id
-        self.position = position
-        self.power = power
-        self.frequency = frequency
-        self.connections = []
-        self.received_messages = []
-        self.status = "ACTIVE"
-
-    def connect(self, node):
-        self.connections.append(node)
-
-    def transmit(self, message):
-        for node in self.connections:
-            node.receive(message)
-
-    def receive(self, message):
-        self.received_messages.append(message)
-        print(f"[{self.node_id}] received:", message)
-```
-
-Acceptance Criteria:
-- Connect ได้
-- ส่ง/รับข้อมูลได้
-- รองรับ ≥ 50 simulated nodes
+| Category | Assessment |
+|----------|------------|
+| Innovation Level | High |
+| Technical Difficulty | High |
+| Feasibility | Moderate |
+| Research Value | High |
+| Commercial Readiness | Low (prototype stage) |
 
 ---
 
-## SA-03: Resonance Matching
+# 10. Future Improvements
 
-```python
-def resonance_match(freq_a, freq_b, tolerance=0.05):
-    return abs(freq_a - freq_b) <= tolerance
-```
-
-Acceptance Criteria:
-- ป้องกันส่งข้ามความถี่
-- Tolerance ปรับได้
+- Auto resonance tuning
+- Adaptive routing algorithm
+- Encryption layer
+- Energy optimization
+- Outdoor range expansion testing
+- Academic paper submission
 
 ---
 
-## SA-04: Basic Routing
+# 11. Conclusion
 
-```python
-def select_best_path(paths):
-    return min(paths, key=lambda p: p["field_strength"])
-```
+Within 4 weeks, the MRN prototype aims to demonstrate:
 
-Acceptance Criteria:
-- เลือกเส้นทางที่เสถียรที่สุด
-- ทำงานกับหลาย route
+- Functional magnetic-based communication
+- Multi-hop mesh networking
+- Basic error detection and reliability
+- Measurable performance metrics
 
----
-
-## SA-05: Logging Module
-
-```python
-import logging
-logging.basicConfig(level=logging.INFO)
-
-def log_event(event):
-    logging.info(event)
-```
-
-Acceptance Criteria:
-- แสดง log บน console
-- บันทึก transmission event
+This prototype serves as a foundation for:
+- Academic research
+- Disaster-resilient communication systems
+- Infrastructure-independent networking
 
 ---
-
-## SA-06: Unit Testing Setup
-
-- ใช้ pytest
-- Coverage ≥ 60%
-- Test Field / Node / Routing
-
----
-
-# 6. Sprint Beta – Resonance Optimization Engine
-
-## Objective
-เพิ่มระบบปรับความถี่อัตโนมัติ
-
-## Tasks
-- Frequency auto-tuning
-- Coupling efficiency model
-- Adaptive power scaling
-- Stability monitoring
-
-## Deliverables
-- ResonanceController class
-- Efficiency benchmark
-
----
-
-# 7. Sprint Gamma – Magnetic Mesh Network
-
-## Objective
-สร้าง decentralized mesh เต็มรูปแบบ
-
-## Tasks
-- Multi-hop relay
-- Field-based routing metric
-- Node failure recovery
-- Latency simulation
-
-## Deliverables
-- 10-node simulation demo
-- Recovery test report
-
----
-
-# 8. Sprint Delta – Secure Magnetic Transmission
-
-## Objective
-สร้าง Magnetic Secure Transmission Protocol (MSTP)
-
-## Tasks
-- Packet schema
-- AES encryption
-- Integrity check (HMAC)
-- Anti-replay
-
-## Deliverables
-- Secure transmission demo
-- Security test report
-
----
-
-# 9. Sprint Epsilon – Environmental Adaptation
-
-## Objective
-จำลองสภาพแวดล้อมจริง
-
-## Tasks
-- Obstacle attenuation model
-- Noise injection
-- Underwater simulation
-- Underground simulation
-
-## Deliverables
-- Performance comparison report
-- Environment simulation engine
-
----
-
-# 10. Definition of Done (DoD)
-
-Sprint เสร็จเมื่อ:
-- Feature ทำงานได้จริง
-- Coverage ≥ 80%
-- ไม่มี Critical Bug
-- Documentation update
-- Demo ผ่าน
-
----
-
-# 11. Metrics & Tracking
-
-KPIs:
-- Field Efficiency %
-- Bit Error Rate (BER)
-- Latency (ms)
-- Recovery Time
-- Coverage %
-- Bug Count
-- Velocity
-
----
-
-# 12. Continuous Integration
-
-- Auto test on PR
-- Linting
-- Coverage report
-- Branch protection
-- Simulation auto-run
-- Performance benchmark check
-
----
-
-# 13. Long-Term Vision Alignment
-
-ทุก Sprint ต้อง align กับ:
-
-- Infrastructure-Independent Communication
-- Decentralized Magnetic Mesh
-- High Resilience
-- Low Interference
-- Backup Global Communication Layer
-- Expandable to Underwater / Underground Networks
-
----
-
-# 14. Conclusion
-
-MRN พัฒนาเป็นลำดับขั้น:
-
-Physics Validation  
-→ Resonance Optimization  
-→ Mesh Networking  
-→ Secure Transmission  
-→ Environmental Adaptation  
-
-จาก Simulation Prototype  
-สู่ Adaptive Secure Magnetic Communication Infrastructure  
-
-เป้าหมายระยะยาว:  
-สร้างเครือข่ายสื่อสารสำรองของโลกที่ไม่พึ่งโครงสร้างพื้นฐานเดิม
