@@ -1,8 +1,8 @@
 # Magnetic Resonance Network (MRN)
 ## Roles, Responsibilities & Boundaries Matrix
-Version: 3.2
-Sprint: Alpha
-Methodology: Agile Scrum
+Version: 3.3  
+Sprint: Alpha  
+Methodology: Agile Scrum  
 
 ---
 
@@ -10,23 +10,23 @@ Methodology: Agile Scrum
 
 | Role | Assigned To | Primary Responsibilities | Secondary Responsibilities | Decision Authority | Reporting To |
 |------|------------|--------------------------|----------------------------|-------------------|--------------|
-| Architect | นางสาวกัญญาภัค ทองวิเศษ | ออกแบบสถาปัตยกรรมทั้งระบบ กำหนด Layer และ Interface | ตรวจสอบความสอดคล้องของทุกองค์ประกอบ | อำนาจตัดสินใจสูงสุดด้าน Architecture | Instructor |
-| Protocol Engineer | นางสาวอลิชา ชนะบุญ | ออกแบบและพัฒนา Routing, Discovery และ Flooding | ปรับปรุงประสิทธิภาพการส่งข้อมูล | ตัดสินใจด้านตรรกะโปรโตคอล | Architect |
-| Implementation Engineer | นางสาวปวริศา สดีดาชมภู | พัฒนา Node Simulation และ Integration | จัดทำ Demo และจัดโครงสร้างโค้ด | ตัดสินใจด้านโครงสร้างโค้ด | Architect |
-| Hardware/Energy Engineer | นายบุญปวณี เรืองไพศาล | ออกแบบโมเดลสัญญาณและวิเคราะห์พลังงาน | ทดสอบระยะและความเสถียร | ตัดสินใจด้าน Energy Model | Architect |
-| Tester/QA | นายปรีชา ศรหีนองบัว | วางแผนทดสอบ เขียน Test Case และสรุปผลคุณภาพ | ตรวจสอบเอกสาร | อนุมัติความพร้อมก่อน Release | All |
+| Architect | นางสาวอลิชา ชนะบุญ | ออกแบบสถาปัตยกรรมทั้งระบบ กำหนด Layer และ Interface | ตรวจสอบความสอดคล้องของทุกองค์ประกอบ | อำนาจตัดสินใจสูงสุดด้าน Architecture | Instructor |
+| Engineer | นายปรีชา ศรหีนองบัว | พัฒนา Routing Logic, Node Simulation และ Integration | ปรับปรุงประสิทธิภาพระบบ | ตัดสินใจด้าน Implementation | Architect |
+| Specialist | นางสาวกัญญาภัค ทองวิเศษ | วิเคราะห์เชิงลึกด้าน Routing Strategy และ Optimization | สนับสนุนการออกแบบเชิงเทคนิคขั้นสูง | ให้คำปรึกษาเชิงเทคนิคเฉพาะทาง | Architect |
+| DevOps | นายบุญปวณี เรืองไพศาล | จัดการ Deployment, CI/CD และ Environment Setup | ดูแลโครงสร้าง Repository และ Automation | ควบคุมกระบวนการ Release | Architect |
+| Tester/QA | นางสาวปวริศา สดีดาชมภู | วางแผนทดสอบ เขียน Test Case และประเมิน KPI | ตรวจสอบเอกสารและคุณภาพ Sprint | อนุมัติความพร้อมก่อน Release | All |
 
 ---
 
 # Detailed Responsibility Matrix
 ## By Project Phase
 
-| Phase | Architect | Protocol | Implementation | Hardware | Tester/QA |
-|-------|----------|----------|----------------|----------|-----------|
-| Week 1: Foundation | กำหนดโครงสร้างระบบและทำ Diagram | ร่างโครงโปรโตคอล | ตั้งโครง Simulation | กำหนดตัวชี้วัดพลังงาน | จัดทำ Test Plan |
-| Week 2: Implementation | ตรวจสอบให้ตรงสเปก | พัฒนา Routing และ Discovery | พัฒนา Node Simulation | ทดลอง Energy Model | เขียน Unit Test |
-| Week 3: Integration | ตรวจสอบความสอดคล้อง | ปรับปรุง Performance | รวมระบบ | วัดผลประสิทธิภาพ | ทำ Integration Test |
-| Week 4: Delivery | Review สถาปัตยกรรม | Final Optimization | เตรียม Demo | ยืนยันค่าพลังงาน | Final Test & Report |
+| Phase | Architect | Engineer | Specialist | DevOps | Tester/QA |
+|-------|----------|----------|------------|--------|-----------|
+| Week 1: Foundation | กำหนดโครงสร้างระบบและทำ Diagram | ตั้งโครง Simulation | วิเคราะห์ Routing Model | ตั้งค่า Repository | จัดทำ Test Plan |
+| Week 2: Implementation | ตรวจสอบให้ตรงสเปก | พัฒนา Core Logic | ปรับปรุง Algorithm | เตรียม CI/CD | เขียน Unit Test |
+| Week 3: Integration | ตรวจสอบความสอดคล้อง | รวมระบบ | วิเคราะห์ Performance | Deploy ทดสอบ | ทำ Integration Test |
+| Week 4: Delivery | Review สถาปัตยกรรม | เตรียม Demo | Optimization ขั้นสุดท้าย | เตรียม Release Pipeline | Final Test & Report |
 
 ---
 
@@ -35,28 +35,28 @@ Methodology: Agile Scrum
 
 | Component | Design Owner | Implementation Owner | Testing Owner | Documentation Owner |
 |-----------|--------------|---------------------|--------------|--------------------|
-| Routing Protocol | Architect | Protocol Engineer | QA | Protocol Engineer |
-| Node Simulation | Architect | Implementation Engineer | QA | Implementation |
-| Energy Model | Hardware Engineer | Hardware Engineer | QA | Architect |
-| Integration | Architect | Implementation Engineer | QA | QA |
-| Documentation | All | All | QA | QA |
+| System Architecture | Architect | Engineer | QA | Specialist |
+| Routing Protocol | Architect | Engineer | QA | Specialist |
+| Node Simulation | Architect | Engineer | QA | Engineer |
+| CI/CD & Deployment | Architect | DevOps | QA | DevOps |
+| Documentation | All | Engineer | QA | QA |
 
 ---
 
 # Decision Authority Matrix
 
-| Decision Type | Architect | Protocol | Implementation | Hardware | QA | Instructor |
-|---------------|----------|----------|----------------|----------|----|------------|
+| Decision Type | Architect | Engineer | Specialist | DevOps | QA | Instructor |
+|---------------|----------|----------|------------|--------|----|------------|
 | Architecture Changes | Approve | Consult | Consult | Consult | Consult | Final if disputed |
-| Protocol Update | Approve | Propose | Consult | - | Consult | - |
-| Implementation Approach | Review | Consult | Approve | - | - | - |
-| Energy Strategy | Review | - | Consult | Approve | - | - |
+| Algorithm Update | Approve | Propose | Consult | - | Consult | - |
+| Implementation Approach | Review | Approve | Consult | - | - | - |
+| Deployment Strategy | Review | Consult | - | Approve | - | - |
 | Release Readiness | Consult | Consult | Consult | Consult | Approve | Final |
 
-คำอธิบาย:
-- Approve = ผู้ตัดสินใจหลัก
-- Consult = ต้องมีการปรึกษาหารือ
-- Review = ตรวจสอบความถูกต้อง
+คำอธิบาย:  
+- Approve = ผู้ตัดสินใจหลัก  
+- Consult = ต้องมีการปรึกษาหารือ  
+- Review = ตรวจสอบความถูกต้อง  
 
 ---
 
@@ -64,13 +64,13 @@ Methodology: Agile Scrum
 
 ## Internal Communication Matrix
 
-| From \ To | Architect | Protocol | Implementation | Hardware | QA |
-|------------|----------|----------|----------------|----------|----|
-| Architect | - | แจ้งการเปลี่ยนแปลงสถาปัตยกรรม | ส่ง Interface Spec | กำหนดข้อจำกัดสัญญาณ | แจ้งเกณฑ์ตรวจสอบ |
-| Protocol | รายงานสถานะ Routing | - | ประสานงาน Integration | แจ้งข้อมูล Performance | ส่งข้อมูลทดสอบ |
-| Implementation | รายงานสถานะโค้ด | แจ้ง Dependency | - | ส่งข้อมูล Simulation | แจ้งความพร้อมทดสอบ |
-| Hardware | แจ้งผลวัดพลังงาน | ข้อจำกัดสัญญาณ | ส่งข้อมูลโมเดล | - | แจ้งผลวัด |
-| QA | รายงานผลทดสอบ | แจ้ง Bug | แจ้ง Coverage | แจ้ง Performance Issue | - |
+| From \ To | Architect | Engineer | Specialist | DevOps | QA |
+|------------|----------|----------|------------|--------|----|
+| Architect | - | แจ้ง Architecture Spec | ขอคำปรึกษาเชิงลึก | แจ้งแผน Deploy | แจ้งเกณฑ์ตรวจสอบ |
+| Engineer | รายงานสถานะโค้ด | - | ขอคำแนะนำ Algorithm | แจ้ง Dependency | แจ้งความพร้อมทดสอบ |
+| Specialist | เสนอ Optimization | ส่งข้อเสนอ Routing | - | แจ้งผลวิเคราะห์ | แจ้งผลวิเคราะห์ |
+| DevOps | แจ้งสถานะ Deployment | แจ้ง Pipeline | - | - | แจ้งผลทดสอบระบบ |
+| QA | รายงาน Bug | แจ้ง Coverage | แจ้งประเด็นคุณภาพ | แจ้งปัญหา Release | - |
 
 ---
 
@@ -94,35 +94,35 @@ Methodology: Agile Scrum
 ทำ:
 - ออกแบบโครงสร้างระบบ
 - กำหนด Interface และมาตรฐาน
+- ตัดสินใจด้านสถาปัตยกรรม
 ไม่ทำ:
-- แก้โค้ดรายบรรทัด
-- เขียน Test Case แทน QA
+- เขียนโค้ดรายบรรทัดแทน Engineer
 
-## Protocol Engineer
+## Engineer
 ทำ:
-- พัฒนา Routing และ Discovery
-- ป้องกัน Loop (TTL/Cache)
+- พัฒนา Core Logic และ Simulation
+- รวมระบบและแก้ปัญหาเชิงเทคนิค
 ไม่ทำ:
-- เปลี่ยน Architecture โดยไม่ผ่าน Review
+- เปลี่ยน Architecture โดยไม่ผ่าน Architect
 
-## Implementation Engineer
+## Specialist
 ทำ:
-- เขียน Simulation และรวมระบบ
-- ดูแลโครงสร้างโค้ด
+- วิเคราะห์และปรับปรุง Algorithm
+- เสนอแนวทาง Optimization
 ไม่ทำ:
-- เปลี่ยนตรรกะโปรโตคอลเอง
+- ตัดสินใจ Release หรือ Deployment
 
-## Hardware Engineer
+## DevOps
 ทำ:
-- วิเคราะห์พลังงานและสัญญาณ
-- ทดสอบระยะ
+- ดูแล CI/CD
+- ควบคุมกระบวนการ Deploy
 ไม่ทำ:
-- ปรับ Routing Algorithm
+- เปลี่ยน Algorithm ภายในระบบ
 
 ## Tester/QA
 ทำ:
-- วางแผนและดำเนินการทดสอบ
-- อนุมัติคุณภาพก่อนส่งงาน
+- วาง Test Plan และ KPI
+- อนุมัติคุณภาพก่อน Release
 ไม่ทำ:
 - ตัดสินใจเชิงสถาปัตยกรรม
 
@@ -130,18 +130,16 @@ Methodology: Agile Scrum
 
 # RACI Matrix
 
-| Activity | Architect | Protocol | Implementation | Hardware | QA |
-|----------|----------|----------|----------------|----------|----|
-| Architecture Definition | R/A | C | C | C | I |
-| Routing Implementation | C | R/A | C | - | I |
-| Simulation Coding | C | C | R/A | - | I |
-| Energy Optimization | C | - | C | R/A | I |
+| Activity | Architect | Engineer | Specialist | DevOps | QA |
+|----------|----------|----------|------------|--------|----|
+| Architecture Definition | R/A | C | C | I | I |
+| Routing Implementation | C | R/A | C | I | I |
+| Algorithm Optimization | C | C | R/A | I | I |
+| CI/CD Setup | I | C | I | R/A | C |
 | Integration Testing | C | C | C | C | R/A |
 
-Legend:
-- R = Responsible
-- A = Accountable
-- C = Consulted
-- I = Informed
-
----
+Legend:  
+- R = Responsible  
+- A = Accountable  
+- C = Consulted  
+- I = Informed  
