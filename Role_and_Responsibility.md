@@ -1,4 +1,4 @@
-# Magnetic Resonance Network (MRCN)
+# Magnetic Resonance Network (MRN)
 ## Roles, Responsibilities & Boundaries Matrix
 Version: 3.2
 Sprint: Alpha
