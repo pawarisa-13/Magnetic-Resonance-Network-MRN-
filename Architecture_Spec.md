@@ -87,3 +87,32 @@ class NetworkEvolution:
     def evolve_topology(self):
         # ปรับโครงสร้างเครือข่ายให้เหมาะสมกับสภาพแวดล้อม
         pass
+
+---
+
+# 5. Phase 3 – Experience Communication Layer (Cognitive Transfer)
+
+## Objective
+พัฒนาโครงสร้างการส่งผ่านการรับรู้และความรู้สึก (Perception Transfer) เพื่อถ่ายทอด “บริบท/อารมณ์/ประสบการณ์” แทนการส่งข้อมูลดิบอย่างเดียว
+
+## Key Tasks
+- Define **Experience Schema** (รูปแบบข้อมูลสำหรับภาพ/เสียง/อารมณ์/บริบท)
+- พัฒนา **Neural-to-Cyber Mapping** (แนวคิดการแปลงสัญญาณการรับรู้ให้เป็นข้อมูล)
+- Build **Experience Transmission Handler** (ตัวจัดการการส่ง/รับ Experience)
+
+## ExperiencePacket Interface (Draft)
+
+```typescript
+export interface ExperiencePacket {
+  version: "1.0";
+  sourceNodeId: string;
+
+  perceptionVector: {
+    visual: number[];    // ข้อมูลภาพที่รับรู้ภายในสมอง (แทนด้วยเวกเตอร์)
+    auditory: number[];  // ข้อมูลเสียง (แทนด้วยเวกเตอร์)
+    emotional: string;   // บริบทความรู้สึก (เช่น calm, fear, joy)
+  };
+
+  context: string;       // บริบทเหตุการณ์ (แก้ชื่อจาก contextContext ให้ชัดเจน)
+  timestamp: number;
+}
