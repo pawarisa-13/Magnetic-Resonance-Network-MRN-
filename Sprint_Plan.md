@@ -1,263 +1,255 @@
 # Magnetic Resonance Network (MRN)
-## Sprint Plan
+## Master Sprint Framework (Alpha → Delta)
 
 ---
 
 # 1. Project Overview
 
-Magnetic Resonance Network (MRN) is a decentralized communication system 
-that transmits data using near-field magnetic resonance instead of RF signals.
+## Project Name
+Magnetic Resonance Network (MRN)
 
-This 4-sprint plan focuses on building a working prototype capable of:
+## Vision
+A decentralized communication network that uses near-field magnetic resonance
+as the transmission medium instead of RF or optical waves.
 
-- Magnetic-based data transmission
-- Reliable packet communication
-- Multi-node mesh relay
-- Measurable performance validation
+## Core Objectives
+- Infrastructure-independent communication
+- Operates in challenging environments (underground, underwater, disaster zones)
+- Decentralized mesh topology
+- High resilience and fault tolerance
 
-Each sprint = 1 week.
+## Core Architecture
+
+| Layer | Responsibility |
+|--------|---------------|
+| Physical | Magnetic resonance signaling |
+| Data Link | Framing + CRC + ACK |
+| Network | Mesh routing |
+| Security | Encryption + Authentication (future sprint) |
 
 ---
 
-# 2. Sprint Structure Overview
+# 2. Sprint Structure (Standard 14-Day Sprint)
 
-| Sprint | Focus Area | Main Outcome |
-|--------|------------|-------------|
-| Sprint 1 | System Design & Feasibility | Validated architecture + simulation |
-| Sprint 2 | Physical Layer | 2-node magnetic communication |
-| Sprint 3 | Protocol & Reliability | Structured and stable data transmission |
-| Sprint 4 | Mesh Network & Validation | 3-node relay + performance metrics |
+Each sprint follows the same structure:
+
+Day 1: Sprint Planning  
+Day 2–11: Development + Daily Standup  
+Day 12–13: Testing + Integration  
+Day 14: Sprint Review + Retrospective  
 
 ---
 
-# ==============================
-# Sprint 1 – System Design & Feasibility
-# ==============================
+# 3. Definition of Done (Global)
 
-## Sprint Goal
-Validate technical feasibility and finalize system architecture.
+A sprint is considered complete when:
 
-## Sprint Backlog
+- All committed backlog items are implemented
+- Integration tests pass
+- Performance metrics recorded
+- Documentation updated
+- Demo prepared
+- Retrospective documented
 
-| ID | Task | Priority | Status |
-|----|------|----------|--------|
-| S1-1 | Define use cases | High | Pending |
-| S1-2 | Design node architecture | High | Pending |
-| S1-3 | Model magnetic attenuation (1/r³) | High | Pending |
-| S1-4 | Simulate resonance frequency curve | Medium | Pending |
-| S1-5 | Define layered communication model | High | Pending |
+---
 
-## Technical Focus
+# ======================================
+# Sprint Alpha (Days 1–14)
+# ======================================
 
-### Magnetic Field Model
-Magnetic field strength decay:
-B ∝ 1 / r³
+## Goal
+Build functional magnetic communication prototype (2–3 nodes)
 
-### Node Components
-- Magnetic coil
-- LC resonance circuit
-- Microcontroller
-- Firmware stack
+## Scope
+- Physical layer implementation
+- Basic packet transmission
+- CRC validation
+- Simple 3-node relay (flood routing)
 
 ## Deliverables
-- System architecture documentation
-- Simulation scripts
-- Feasibility summary
+- 2-node magnetic communication
+- 3-node relay demo
+- Packet reliability (CRC + ACK)
+- Performance metrics recorded
 
-## Definition of Done
-- Architecture finalized
-- Simulation results documented
-- Constraints clearly identified
+## Alpha KPIs
 
----
-
-# ==============================
-# Sprint 2 – Physical Layer Implementation
-# ==============================
-
-## Sprint Goal
-Achieve magnetic communication between 2 nodes.
-
-## Sprint Backlog
-
-| ID | Task | Priority | Status |
-|----|------|----------|--------|
-| S2-1 | Build LC resonance circuit | High | Pending |
-| S2-2 | Implement bit-level encoding | High | Pending |
-| S2-3 | Implement signal detection | High | Pending |
-| S2-4 | Perform range testing | High | Pending |
-| S2-5 | Measure signal stability | Medium | Pending |
-
-## Technical Focus
-
-### Transmission Method
-- Frequency-based signaling
-- Binary modulation
-
-### Validation Tests
-- Send 1–8 byte messages
-- Measure max range
-- Record packet success rate
-
-## Deliverables
-- 2 working nodes
-- Range test report
-- Signal stability log
-
-## Definition of Done
-- Successful byte transmission
-- Stable detection at defined range
-- Test results documented
-
----
-
-# ==============================
-# Sprint 3 – Protocol & Reliability Layer
-# ==============================
-
-## Sprint Goal
-Enable structured and reliable communication.
-
-## Sprint Backlog
-
-| ID | Task | Priority | Status |
-|----|------|----------|--------|
-| S3-1 | Design packet structure | High | Pending |
-| S3-2 | Implement CRC validation | High | Pending |
-| S3-3 | Implement ACK mechanism | High | Pending |
-| S3-4 | Implement retry logic | Medium | Pending |
-| S3-5 | Test corrupted packet detection | High | Pending |
-
-## Packet Structure
-
-| Field | Description |
-|-------|------------|
-| PREAMBLE | Synchronization bits |
-| SRC | Source ID |
-| DST | Destination ID |
-| DATA | Payload |
-| CRC | Error detection |
-
-## Validation Criteria
-- Error detection functional
-- Reliable 20–50 byte transmission
-- Retry works on packet loss
-
-## Deliverables
-- Stable packet transmission
-- Reliability test report
-
-## Definition of Done
-- CRC detects errors
-- ACK confirmed
-- Retry triggers correctly
-
----
-
-# ==============================
-# Sprint 4 – Mesh Network & Validation
-# ==============================
-
-## Sprint Goal
-Enable multi-hop mesh communication and validate performance.
-
-## Sprint Backlog
-
-| ID | Task | Priority | Status |
-|----|------|----------|--------|
-| S4-1 | Add third node (relay) | High | Pending |
-| S4-2 | Implement flood routing | High | Pending |
-| S4-3 | Test 2-hop communication | High | Pending |
-| S4-4 | Measure latency per hop | Medium | Pending |
-| S4-5 | Conduct resilience test (remove node) | High | Pending |
-
-## Network Model
-Topology: Decentralized mesh  
-Routing: Flood-based routing  
-
-## Validation Tests
-1. 2-hop relay transmission
-2. Packet success rate measurement
-3. Node removal test
-4. Continuous stability test (1 hour)
-
-## Performance Targets
-
-| Metric | Target |
-|--------|--------|
+| KPI | Target |
+|-----|--------|
 | Communication Range | ≥ 1–3 meters |
 | Packet Success Rate | ≥ 80% |
-| Multi-hop Capability | ≥ 2 hops |
+| Multi-hop | ≥ 2 hops |
 | Latency per hop | < 200 ms |
-| Data Rate | 100–1000 bps |
-
-## Deliverables
-- 3-node working mesh
-- Performance metrics documentation
-- Final technical summary
-
-## Definition of Done
-- 3 nodes relay successfully
-- Network survives single node removal
-- Metrics recorded and documented
 
 ---
 
-# 3. Global Risk Analysis
+# ======================================
+# Sprint Beta
+# ======================================
+
+## Goal
+Improve reliability, optimize performance, add adaptive features
+
+## Scope
+- Auto resonance tuning
+- Improved routing logic
+- Packet size optimization
+- Energy efficiency improvements
+
+## Deliverables
+- Adaptive frequency selection
+- Reduced packet loss
+- Measured energy per transmission
+
+## Beta KPIs
+
+| KPI | Target |
+|-----|--------|
+| Packet Success Rate | ≥ 90% |
+| Energy Reduction | ≥ 20% improvement |
+| Latency Stability | ±10% variance |
+| Network Recovery Time | < 2 seconds |
+
+---
+
+# ======================================
+# Sprint Gamma
+# ======================================
+
+## Goal
+Add security and resilience
+
+## Scope
+- Encryption layer (AES)
+- Node authentication
+- Secure handshake protocol
+- Resilience testing under failure scenarios
+
+## Deliverables
+- Encrypted communication
+- Authentication verification
+- Security validation tests
+
+## Gamma KPIs
+
+| KPI | Target |
+|-----|--------|
+| Encryption Overhead | < 15% latency increase |
+| Authentication Success Rate | 100% |
+| Unauthorized Access Prevention | 100% |
+
+---
+
+# ======================================
+# Sprint Delta
+# ======================================
+
+## Goal
+System scaling and real-environment validation
+
+## Scope
+- Expand to 5+ nodes
+- Outdoor/underground testing
+- Long-duration stability test
+- Advanced routing improvements
+
+## Deliverables
+- 5-node working mesh
+- Environmental test results
+- Stability report (≥ 24 hours)
+
+## Delta KPIs
+
+| KPI | Target |
+|-----|--------|
+| Multi-hop | ≥ 4 hops |
+| Stability Duration | ≥ 24 hours |
+| Packet Success Rate | ≥ 92% |
+| Network Self-Recovery | Automatic |
+
+---
+
+# 4. Risk Management
 
 ## Technical Risks
 
-| Risk | Impact | Mitigation |
-|------|--------|------------|
-| Limited range | High | Increase relay density |
-| Signal attenuation | High | Optimize coil design |
-| Resonance mismatch | Medium | Manual tuning |
-| Low bandwidth | Medium | Optimize packet size |
+| Risk | Impact | Probability | Mitigation |
+|------|--------|------------|------------|
+| Short magnetic range | High | High | Increase relay density |
+| Signal attenuation | High | High | Optimize coil design |
+| Resonance mismatch | Medium | Medium | Auto tuning algorithm |
+| Low bandwidth | Medium | Medium | Packet optimization |
+| High power consumption | Medium | Medium | Duty cycle control |
+
+---
 
 ## Operational Risks
 
 | Risk | Impact | Mitigation |
 |------|--------|------------|
-| Firmware instability | Medium | Incremental testing |
-| Hardware failure | Medium | Component validation |
-| Schedule delay | Medium | Prioritize core tasks |
+| Firmware bugs | Medium | Incremental testing |
+| Hardware damage | Medium | Component validation |
+| Integration failure | Medium | Early integration testing |
+| Scope creep | Medium | Strict sprint boundaries |
 
 ---
 
-# 4. Technical Constraints
+# 5. KPI Dashboard (Global Tracking)
 
-| Constraint | Description |
-|------------|------------|
-| Magnetic decay | ∝ 1/r³ |
-| Near-field limitation | Short-medium range |
-| Bandwidth | Lower than RF |
-| Energy demand | High current requirement |
+## Performance KPIs
 
----
-
-# 5. Overall Definition of Success (End of Sprint 4)
-
-The 4-sprint cycle is successful if:
-
-- 2 nodes communicate reliably
-- 3-node mesh relay works
-- CRC and ACK function correctly
-- Packet success rate ≥ 80%
-- Performance metrics recorded
-- Documentation complete
+| Category | Metric |
+|----------|--------|
+| Reliability | Packet Success Rate |
+| Performance | Latency per hop |
+| Scalability | Maximum hops supported |
+| Stability | Continuous operation duration |
+| Efficiency | Energy per transmission |
 
 ---
 
-# 6. Post-Sprint Direction
+## Quality KPIs
 
-After Sprint 4:
-
-- Add auto resonance tuning
-- Implement adaptive routing
-- Add encryption layer
-- Optimize energy efficiency
-- Expand to outdoor testing
+| Category | Metric |
+|----------|--------|
+| Test Coverage | ≥ 80% scenarios tested |
+| Critical Bugs | 0 unresolved |
+| Integration Stability | 100% pass before review |
 
 ---
 
-End of 4-Week Sprint Plan
+# 6. Continuous Improvement Framework
+
+After each sprint:
+
+- Review KPI results
+- Identify bottlenecks
+- Update risk matrix
+- Refine architecture if necessary
+- Plan next sprint backlog
+
+---
+
+# 7. Long-Term Vision (Post-Delta)
+
+- Adaptive AI-based routing
+- Full encryption by default
+- Larger-scale deployment
+- Academic publication
+- Real-world pilot project
+
+---
+
+# 8. Project Success Criteria
+
+Project considered successful if:
+
+- Stable multi-hop magnetic mesh demonstrated
+- Adaptive tuning operational
+- Secure communication implemented
+- System validated in real environment
+- Documentation complete for research or deployment
+
+---
+
+End of MRN Master Sprint Framework
