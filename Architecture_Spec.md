@@ -119,21 +119,19 @@ D --> E
 
 ---
 
-## 4.5 Magnetic Security Engine
+## 4.5 Application Layer
 
-### Design Philosophy
-“Security must be embedded at the magnetic field level”
-
-### Security Principles
-- Encryption ผูกกับ Resonance Signature
-- Dynamic Frequency Shifting เพื่อลดการดักฟัง
-- Field Pattern Verification ป้องกันการปลอมแปลง
-- Zero Central Authority
-
-### Security Capabilities
-- ลดความเสี่ยงจาก RF Interception
-- ป้องกัน Spoofing
-- รองรับ End-to-End Field-Based Encryption
+### Responsibilities
+- ให้บริการแอปพลิเคชันบนเครือข่าย MRN
+- จัดการ data exchange ระดับผู้ใช้งาน
+- ติดต่อระบบภายนอกผ่าน API
+- แสดงผล / วิเคราะห์ข้อมูล
+- กำหนด logic ของระบบ (monitoring, control, automation)
+### Characteristics
+- ไม่ขึ้นกับ hardware
+- ใช้ abstraction จาก lower layers
+-  รองรับหลาย application พร้อมกัน
+-  สามารถ deploy distributed ได้
 
 ---
 
