@@ -1,206 +1,187 @@
 # Magnetic Resonance Network (MRN)
-## Master Project Plan (4-Week Intensive Development)
+## Sprint Plan
 
 ---
 
-# 1. Executive Summary
+# 1. Project Overview
 
 Magnetic Resonance Network (MRN) is a decentralized communication system 
-that uses near-field magnetic resonance instead of traditional RF or optical signals.
+that transmits data using near-field magnetic resonance instead of RF signals.
 
-The objective is to create a resilient communication network capable of operating:
-- Without traditional infrastructure
-- Underwater
-- Underground
-- In disaster scenarios
+This 4-sprint plan focuses on building a working prototype capable of:
 
-This document outlines:
-- 4-week development roadmap
-- System architecture
-- Risk analysis
-- Technical constraints
-- Budget estimation
-- Success metrics
-- Feasibility evaluation
+- Magnetic-based data transmission
+- Reliable packet communication
+- Multi-node mesh relay
+- Measurable performance validation
+
+Each sprint = 1 week.
 
 ---
 
-# 2. System Overview
+# 2. Sprint Structure Overview
 
-## 2.1 Core Concept
-
-Communication medium: Near-field magnetic resonance  
-Topology: Decentralized mesh  
-Node role: Sender + Receiver + Relay  
-
-## 2.2 Layered Architecture
-
-| Layer | Function |
-|--------|----------|
-| Physical | Magnetic resonance signaling via LC circuit |
-| Data Link | Packet framing + CRC + ACK |
-| Network | Flood-based routing |
-| Security (Future) | Encryption + Authentication |
+| Sprint | Focus Area | Main Outcome |
+|--------|------------|-------------|
+| Sprint 1 | System Design & Feasibility | Validated architecture + simulation |
+| Sprint 2 | Physical Layer | 2-node magnetic communication |
+| Sprint 3 | Protocol & Reliability | Structured and stable data transmission |
+| Sprint 4 | Mesh Network & Validation | 3-node relay + performance metrics |
 
 ---
 
-# 3. 4-Week Development Plan
+# ==============================
+# Sprint 1 – System Design & Feasibility
+# ==============================
 
-## Week 1 – System Design & Simulation
+## Sprint Goal
+Validate technical feasibility and finalize system architecture.
 
-### Objectives
-- Validate feasibility
-- Design architecture
-- Simulate magnetic field behavior
+## Sprint Backlog
 
-### Tasks
-- Define use cases
-- Model magnetic attenuation (1/r³)
-- Simulate resonance curve
-- Draft system architecture diagram
+| ID | Task | Priority | Status |
+|----|------|----------|--------|
+| S1-1 | Define use cases | High | Pending |
+| S1-2 | Design node architecture | High | Pending |
+| S1-3 | Model magnetic attenuation (1/r³) | High | Pending |
+| S1-4 | Simulate resonance frequency curve | Medium | Pending |
+| S1-5 | Define layered communication model | High | Pending |
 
-### Deliverables
-- Architecture documentation
+## Technical Focus
+
+### Magnetic Field Model
+Magnetic field strength decay:
+B ∝ 1 / r³
+
+### Node Components
+- Magnetic coil
+- LC resonance circuit
+- Microcontroller
+- Firmware stack
+
+## Deliverables
+- System architecture documentation
 - Simulation scripts
 - Feasibility summary
 
----
-
-## Week 2 – Physical Layer Prototype
-
-### Objectives
-- Build 2 working nodes
-- Achieve magnetic communication
-
-### Hardware Components
-- Copper coil
-- Capacitor (LC resonance tuning)
-- ESP32 or Arduino
-- Power supply
-
-### Tasks
-- Construct LC circuit
-- Encode binary data into frequency signal
-- Measure communication range
-- Conduct signal stability tests
-
-### Deliverables
-- 2-node communication
-- Range test results
-- Stability log
+## Definition of Done
+- Architecture finalized
+- Simulation results documented
+- Constraints clearly identified
 
 ---
 
-## Week 3 – Protocol & Reliability
+# ==============================
+# Sprint 2 – Physical Layer Implementation
+# ==============================
 
-### Objectives
-- Implement structured communication
-- Improve reliability
+## Sprint Goal
+Achieve magnetic communication between 2 nodes.
 
-### Packet Format
+## Sprint Backlog
+
+| ID | Task | Priority | Status |
+|----|------|----------|--------|
+| S2-1 | Build LC resonance circuit | High | Pending |
+| S2-2 | Implement bit-level encoding | High | Pending |
+| S2-3 | Implement signal detection | High | Pending |
+| S2-4 | Perform range testing | High | Pending |
+| S2-5 | Measure signal stability | Medium | Pending |
+
+## Technical Focus
+
+### Transmission Method
+- Frequency-based signaling
+- Binary modulation
+
+### Validation Tests
+- Send 1–8 byte messages
+- Measure max range
+- Record packet success rate
+
+## Deliverables
+- 2 working nodes
+- Range test report
+- Signal stability log
+
+## Definition of Done
+- Successful byte transmission
+- Stable detection at defined range
+- Test results documented
+
+---
+
+# ==============================
+# Sprint 3 – Protocol & Reliability Layer
+# ==============================
+
+## Sprint Goal
+Enable structured and reliable communication.
+
+## Sprint Backlog
+
+| ID | Task | Priority | Status |
+|----|------|----------|--------|
+| S3-1 | Design packet structure | High | Pending |
+| S3-2 | Implement CRC validation | High | Pending |
+| S3-3 | Implement ACK mechanism | High | Pending |
+| S3-4 | Implement retry logic | Medium | Pending |
+| S3-5 | Test corrupted packet detection | High | Pending |
+
+## Packet Structure
 
 | Field | Description |
-|--------|------------|
-| PREAMBLE | Synchronization pattern |
+|-------|------------|
+| PREAMBLE | Synchronization bits |
 | SRC | Source ID |
 | DST | Destination ID |
 | DATA | Payload |
 | CRC | Error detection |
 
-### Features
-- CRC validation
-- ACK system
-- Retry mechanism
-- Timeout handling
+## Validation Criteria
+- Error detection functional
+- Reliable 20–50 byte transmission
+- Retry works on packet loss
 
-### Deliverables
-- Stable message transmission
-- Error detection working
-- Retry logic validated
+## Deliverables
+- Stable packet transmission
+- Reliability test report
 
----
-
-## Week 4 – Mesh Network & Demonstration
-
-### Objectives
-- Implement multi-hop communication
-- Demonstrate resilience
-
-### Tasks
-- Add 3rd node as relay
-- Implement flood routing
-- Test 2-hop transmission
-- Measure latency and packet success rate
-- Record demo video
-- Write final report
-
-### Deliverables
-- 3-node mesh prototype
-- Performance metrics
-- Final documentation
+## Definition of Done
+- CRC detects errors
+- ACK confirmed
+- Retry triggers correctly
 
 ---
 
-# 4. Risk Analysis
+# ==============================
+# Sprint 4 – Mesh Network & Validation
+# ==============================
 
-## 4.1 Technical Risks
+## Sprint Goal
+Enable multi-hop mesh communication and validate performance.
 
-| Risk | Impact | Probability | Mitigation |
-|------|--------|------------|------------|
-| Short communication range | High | High | Add relay nodes |
-| Signal attenuation (1/r³) | High | High | Optimize coil size |
-| Low bandwidth | Medium | Medium | Reduce packet size |
-| High power consumption | Medium | Medium | Duty cycle transmission |
-| Resonance mismatch | Medium | Medium | Auto frequency tuning |
+## Sprint Backlog
 
----
+| ID | Task | Priority | Status |
+|----|------|----------|--------|
+| S4-1 | Add third node (relay) | High | Pending |
+| S4-2 | Implement flood routing | High | Pending |
+| S4-3 | Test 2-hop communication | High | Pending |
+| S4-4 | Measure latency per hop | Medium | Pending |
+| S4-5 | Conduct resilience test (remove node) | High | Pending |
 
-## 4.2 Environmental Risks
+## Network Model
+Topology: Decentralized mesh  
+Routing: Flood-based routing  
 
-| Risk | Impact | Mitigation |
-|------|--------|------------|
-| EMI interference | Medium | Shielding |
-| Metal obstruction | High | Increase node density |
-| Water conductivity | Medium | Adjust frequency |
+## Validation Tests
+1. 2-hop relay transmission
+2. Packet success rate measurement
+3. Node removal test
+4. Continuous stability test (1 hour)
 
----
-
-## 4.3 Project Risks
-
-| Risk | Impact | Mitigation |
-|------|--------|------------|
-| Hardware damage | Medium | Prepare spare components |
-| Timeline delay | Medium | Parallel development |
-| Budget limitation | Low | Use low-cost hardware |
-
----
-
-# 5. Technical Constraints
-
-| Constraint | Description |
-|------------|------------|
-| Physics | Magnetic field decay ∝ 1/r³ |
-| Range | Limited compared to RF |
-| Bandwidth | Lower than Wi-Fi |
-| Energy | Requires significant current |
-| Regulation | Must comply with EM standards |
-
----
-
-# 6. Budget Estimation (Prototype – 3 Nodes)
-
-| Component | Quantity | Estimated Cost |
-|------------|----------|----------------|
-| ESP32 / Arduino | 3 | 900–1500 THB |
-| Copper Coil | 3 | 300 THB |
-| Capacitor Set | 1 | 200 THB |
-| Power Supply | 3 | 600 THB |
-| Misc (wires, PCB) | - | 500 THB |
-| Total Estimated | | 2,500–3,000 THB |
-
----
-
-# 7. Performance Targets (Success Metrics)
+## Performance Targets
 
 | Metric | Target |
 |--------|--------|
@@ -210,58 +191,73 @@ Node role: Sender + Receiver + Relay
 | Latency per hop | < 200 ms |
 | Data Rate | 100–1000 bps |
 
----
+## Deliverables
+- 3-node working mesh
+- Performance metrics documentation
+- Final technical summary
 
-# 8. Validation Tests
-
-1. Single-hop transmission test
-2. Multi-hop relay test
-3. Packet corruption detection test
-4. Power consumption measurement
-5. 1-hour stability test
-
-Acceptance Criteria:
-- 3 nodes successfully relay data
-- CRC detects corrupted packet
-- Network remains functional if 1 node is removed
+## Definition of Done
+- 3 nodes relay successfully
+- Network survives single node removal
+- Metrics recorded and documented
 
 ---
 
-# 9. Strategic Evaluation
+# 3. Global Risk Analysis
 
-| Category | Assessment |
-|----------|------------|
-| Innovation Level | High |
-| Technical Difficulty | High |
-| Feasibility | Moderate |
-| Research Value | High |
-| Commercial Readiness | Low (prototype stage) |
+## Technical Risks
 
----
+| Risk | Impact | Mitigation |
+|------|--------|------------|
+| Limited range | High | Increase relay density |
+| Signal attenuation | High | Optimize coil design |
+| Resonance mismatch | Medium | Manual tuning |
+| Low bandwidth | Medium | Optimize packet size |
 
-# 10. Future Improvements
+## Operational Risks
 
-- Auto resonance tuning
-- Adaptive routing algorithm
-- Encryption layer
-- Energy optimization
-- Outdoor range expansion testing
-- Academic paper submission
+| Risk | Impact | Mitigation |
+|------|--------|------------|
+| Firmware instability | Medium | Incremental testing |
+| Hardware failure | Medium | Component validation |
+| Schedule delay | Medium | Prioritize core tasks |
 
 ---
 
-# 11. Conclusion
+# 4. Technical Constraints
 
-Within 4 weeks, the MRN prototype aims to demonstrate:
-
-- Functional magnetic-based communication
-- Multi-hop mesh networking
-- Basic error detection and reliability
-- Measurable performance metrics
-
-This prototype serves as a foundation for:
-- Academic research
-- Disaster-resilient communication systems
-- Infrastructure-independent networking
+| Constraint | Description |
+|------------|------------|
+| Magnetic decay | ∝ 1/r³ |
+| Near-field limitation | Short-medium range |
+| Bandwidth | Lower than RF |
+| Energy demand | High current requirement |
 
 ---
+
+# 5. Overall Definition of Success (End of Sprint 4)
+
+The 4-sprint cycle is successful if:
+
+- 2 nodes communicate reliably
+- 3-node mesh relay works
+- CRC and ACK function correctly
+- Packet success rate ≥ 80%
+- Performance metrics recorded
+- Documentation complete
+
+---
+
+# 6. Post-Sprint Direction
+
+After Sprint 4:
+
+- Add auto resonance tuning
+- Implement adaptive routing
+- Add encryption layer
+- Optimize energy efficiency
+- Expand to outdoor testing
+
+---
+
+End of 4-Week Sprint Plan
