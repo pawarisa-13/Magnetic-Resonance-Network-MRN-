@@ -20,27 +20,27 @@
 ## Demo Description
 
 ---
-## Testing & Validation
+## Testing & Validation (การทดสอบและตรวจสอบความถูกต้อง)
 
 ---
-## Performance Metrics
+## Performance Metrics (ตัวชี้วัดประสิทธิภาพ)
 
 ---
-## Limitations
+## Limitations (ข้อจำกัด)
 
 ---
-## Ethics
+## Ethics (จริยธรรม)
 
 ---
-## Legal
+## Legal (กฎหมาย)
 
 ---
-## Human-in-the-loop
+## Human-in-the-loop (มนุษย์ควบคุมระบบ) 
 
 ---
-## Future Work
+## Future Work (สิ่งที่จะพัฒนาต่อ)
 
 ---
-## Conclusion
+## Conclusion (สรุป)
 
 ---
